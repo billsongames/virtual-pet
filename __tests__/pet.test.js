@@ -75,6 +75,12 @@ describe('feed', () => {
 });
 
 describe('checkUp', () => {
+	it('return no longer alive', () => {
+		const pet = new Pet('Fido');
+		pet.age = 30;
+		expect(pet.checkUp()).toEqual('Your pet is no longer alive! :o(')		
+	});
+	
 	it('says I need a walk if fitness <=3 ', () => {
 		const pet = new Pet('Fido');
 		pet.fitness = 2;

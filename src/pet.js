@@ -51,7 +51,7 @@ Pet.prototype.walk = function() {
   try {
   } catch (e) {
     console.error(e)
-    }
+  }
 
   this.fitness += fitnessWalkChange;
 
@@ -67,7 +67,7 @@ Pet.prototype.feed = function() {
   try {
   } catch (e) {
     console.error(e)
-    }
+  }
 
   this.hunger -= hungerFeedChange;
 
@@ -78,8 +78,8 @@ Pet.prototype.feed = function() {
 
 Pet.prototype.checkUp = function () {
   if (!this.isAlive) {
-      return('Your pet is no longer alive! :o(')
-    }
+    return('Your pet is no longer alive! :o(')
+  }
 
   if (this.fitness <= minFitnessForWalk && this.hunger >= minHungerForFeed) {
     return ("I am hungry AND I need a walk")
