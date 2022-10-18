@@ -77,10 +77,10 @@ Pet.prototype.feed = function() {
 }
 
 Pet.prototype.checkUp = function () {
-  if (this.isAlive === false) {
-    if (!this.isAlive) {
+  if (!this.isAlive) {
       return('Your pet is no longer alive! :o(')
     }
+
   if (this.fitness <= minFitnessForWalk && this.hunger >= minHungerForFeed) {
     return ("I am hungry AND I need a walk")
   }
@@ -96,10 +96,6 @@ Pet.prototype.checkUp = function () {
   if (this.hunger < minHungerForFeed && this.fitness > minFitnessForWalk) {
     return("I feel great!")
   }  
-}
-
-Pet.prototype.isAlive2 = function() {
-  return this.age < 30 && this.hunger < 10 && this.fitness > 0;
 }
 
 module.exports = Pet;
