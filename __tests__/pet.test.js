@@ -3,27 +3,27 @@ const Pet = require('../src/pet');
 describe('constructor', () => {
   it('returns an object', () => {
     expect(new Pet('Fido')).toBeInstanceOf(Object);
-		});
+	});
 
 	it('pet has a name', () => {
 		const pet = new Pet('Fido');
 		expect(pet.petName).toEqual('Fido');
-		});
+	});
 
 	it('pet initial age is 0', () => {
 		const pet = new Pet('Fido');
 		expect(pet.age).toEqual(0);
-		});
+	});
 
 	it('pet initial hunger is 0', () => {
 		const pet = new Pet('Fido');
 		expect(pet.hunger).toEqual(0);
-		});
+	});
 
 	it('pet initial fitness is 10', () => {
 		const pet = new Pet('Fido');
 		expect(pet.fitness).toEqual(10);
-		});
+	});
 });
 
 describe('growUp', () => {
@@ -52,6 +52,13 @@ describe('walk', () => {
 });
 
 describe('feed', () => {
+
+	it('throws an exception if pet not alive', () => {
+		const pet = new Pet('Fido');
+		pet.age = 30;
+		expect(() => pet.feed()).toThrow('Your pet is no longer alive! :o(');
+	});
+
 	it('feed decreases hunger by 3', () => {
 		const pet = new Pet('Fido');
 		pet.hunger = 8;
@@ -64,7 +71,7 @@ describe('feed', () => {
 		pet.hunger = 2;
 		pet.feed();
 		expect(pet.hunger).toEqual(0);
-	});	
+		});	
 });
 
 describe('checkUp', () => {
@@ -92,5 +99,14 @@ describe('checkUp', () => {
 		pet.fitness = 6;
 		pet.hunger = 3;
 		expect(pet.checkUp()).toEqual('I feel great!')
+	});
+});
+
+describe('isAlive', () => {
+	const pet = new Pet('Fido');
+	it('pet is not alive', () => {
+		expect(() => {
+			pet.isAlive(false);
+		}).toThrow();
 	});
 });

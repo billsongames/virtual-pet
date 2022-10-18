@@ -1,0 +1,2 @@
+const Pet = require('./src/pet.js')
+const pet = new Pet('Reg')
