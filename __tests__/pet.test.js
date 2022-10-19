@@ -7,7 +7,7 @@ describe('constructor', () => {
 
 	it('pet has a name', () => {
 		const pet = new Pet('Fido');
-		expect(pet.petName).toEqual('Fido');
+		expect(pet.name).toEqual('Fido');
 	});
 
 	it('pet initial age is 0', () => {
@@ -114,5 +114,22 @@ describe('isAlive', () => {
 		expect(() => {
 			pet.isAlive(false);
 		}).toThrow();
+	});
+});
+
+describe('adopt a child gives correct child info', () => {
+	const pet = new Pet('Fido');
+	const child = new Pet('Shep');
+	pet.adoptChild(child)
+	it('adopt a child ', () => {
+		expect(pet.children[0].name).toEqual('Shep')
+	});
+});
+
+describe('have a baby gives correct child info', () => {
+	const pet = new Pet('Fido');
+	pet.haveBaby('Fang')
+	it('adopt a child ', () => {
+		expect(pet.children[0].name).toEqual('Fang')
 	});
 });

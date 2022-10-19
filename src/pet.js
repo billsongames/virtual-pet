@@ -14,10 +14,11 @@ const minFitnessForWalk = 3;
 const minHungerForFeed = 5;
 
 function Pet(name) {
-  this.petName = name;
+  this.name = name;
   this.age = 0;
   this.hunger = initialHunger;
   this.fitness = initialFitness;
+  this.children = []
 }
 
 Pet.prototype = {
@@ -96,6 +97,15 @@ Pet.prototype.checkUp = function () {
   if (this.hunger < minHungerForFeed && this.fitness > minFitnessForWalk) {
     return("I feel great!")
   }  
+}
+
+Pet.prototype.adoptChild = function(child) {
+  this.children.push(child)
+}
+
+Pet.prototype.haveBaby = function(babyName) {
+  baby = new Pet(babyName)
+  this.children.push(baby)
 }
 
 module.exports = Pet;

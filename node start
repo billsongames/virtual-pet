@@ -1,2 +1,3 @@
 const Pet = require('./src/pet.js')
-const pet = new Pet('Reg')
+const parent = new Pet('Reg')
+const child = new Pet('Kipper')
