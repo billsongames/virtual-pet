@@ -118,18 +118,18 @@ describe('isAlive', () => {
 });
 
 describe('adopt a child gives correct child info', () => {
-	const pet = new Pet('Fido');
+	const parent = new Pet('Fido');
 	const child = new Pet('Shep');
-	pet.adoptChild(child)
+	parent.adoptChild(child)
 	it('adopt a child ', () => {
-		expect(pet.children[0].name).toEqual('Shep')
+		expect(parent.children[0].name).toEqual('Shep')
 	});
 });
 
 describe('have a baby gives correct child info', () => {
-	const pet = new Pet('Fido');
-	pet.haveBaby('Fang')
+	const parent = new Pet('Fido');
+	parent.haveBaby('Fang')
 	it('adopt a child ', () => {
-		expect(pet.children[0].name).toEqual('Fang')
+		expect(parent.children[0].name).toEqual('Fang')
 	});
 });

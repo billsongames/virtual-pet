@@ -19,22 +19,22 @@ function Pet(name) {
   this.hunger = initialHunger;
   this.fitness = initialFitness;
   this.children = []
-}
+};
 
 Pet.prototype = {
   get isAlive() {
     return this.fitness > 0 && this.hunger < 10 && this.age < 30;
   }
-}
+};
 
 Pet.prototype.growUp = function() {
   if (!this.isAlive) {
     throw new Error('Your pet is no longer alive! :o(')
-  }
+  };
   try {
   } catch (e) {
     console.error(e)
-  }
+  };
 
   this.age += 1;
   this.hunger += hungerGrowUpChange;
@@ -42,70 +42,70 @@ Pet.prototype.growUp = function() {
 
   if (this.fitness > maxFitness) {
     this.fitness = maxFitness;
-  }
-}
+  };
+};
 
 Pet.prototype.walk = function() {
   if (!this.isAlive) {
     throw new Error('Your pet is no longer alive! :o(')
-  }
+  };
   try {
   } catch (e) {
     console.error(e)
-  }
+  };
 
   this.fitness += fitnessWalkChange;
 
   if (this.fitness > maxFitness){
     this.fitness = maxFitness;
-  }
-}
+  };
+};
 
 Pet.prototype.feed = function() {
   if (!this.isAlive) {
     throw new Error('Your pet is no longer alive! :o(')
-  }
+  };
   try {
   } catch (e) {
     console.error(e)
-  }
+  };
 
   this.hunger -= hungerFeedChange;
 
   if (this.hunger < minHunger){
       this.hunger = minHunger;
-  }
-}
+  };
+};
 
 Pet.prototype.checkUp = function () {
   if (!this.isAlive) {
     return('Your pet is no longer alive! :o(')
-  }
+  };
 
   if (this.fitness <= minFitnessForWalk && this.hunger >= minHungerForFeed) {
     return ("I am hungry AND I need a walk")
-  }
+  };
 
   if (this.fitness <= minFitnessForWalk) {
     return ("I need a walk")
-  }
+  };
 
   if (this.hunger >= minHungerForFeed) {
     return("I am hungry")
-  }
+  };
 
   if (this.hunger < minHungerForFeed && this.fitness > minFitnessForWalk) {
     return("I feel great!")
-  }  
-}
+  };  
+};
 
 Pet.prototype.adoptChild = function(child) {
   this.children.push(child)
-}
+};
 
 Pet.prototype.haveBaby = function(babyName) {
   baby = new Pet(babyName)
   this.children.push(baby)
-}
+};
 
 module.exports = Pet;
