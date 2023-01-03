@@ -31,27 +31,19 @@ Pet.prototype.growUp = function() {
   if (!this.isAlive) {
     throw new Error('Your pet is no longer alive! :o(')
   };
-  try {
-  } catch (e) {
-    console.error(e)
-  };
 
   this.age += 1;
   this.hunger += hungerGrowUpChange;
   this.fitness -= fitnessGrowUpChange;
 
-  if (this.fitness > maxFitness) {
+/*   if (this.fitness > maxFitness) {
     this.fitness = maxFitness;
-  };
+  }; */
 };
 
 Pet.prototype.walk = function() {
   if (!this.isAlive) {
     throw new Error('Your pet is no longer alive! :o(')
-  };
-  try {
-  } catch (e) {
-    console.error(e)
   };
 
   this.fitness += fitnessWalkChange;
