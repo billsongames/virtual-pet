@@ -14,20 +14,149 @@
   <title>Virtual Pet</title>
 </head>
 
-<body>
-  <h1><center>VIRTUAL PET</center></h1>
+<body id="viewport">
+  <script src="src/pet.js"></script>
+  <script src="src/petSelection.js"></script>
+  <script src="src/htmlBuilder.js"></script>
+  <script src="src/petControl.js"></script>
 
-  <h2>pick your pet</h2>
-<!--   carousel of images -->
+  <audio id = "POL-staff-roll-short-32" class ="danceBGM" src="./sound/music/POL-staff-roll-short-32.wav")></audio>
+  <audio id = "POL-follow-me-short-32" class ="danceBGM"src="./sound/music/POL-follow-me-short-32.wav")></audio>
+  <audio id = "POL-pet-park-short-32" class ="danceBGM" src="./sound/music/POL-pet-park-short-32.wav")></audio>
+  <audio id = "POL-star-way-short-32" class ="danceBGM" src="./sound/music/POL-star-way-short-32.wav"></audio>
+  
+  <div id="mainBackground">
+
+  <h1>VIRTUAL PET</h1>
+
+  <h2 id="sectionHeading">SELECT YOUR PET...</h2>
+  <div id="main">
+    <div id="petSelection">    
+      <div id="pet_selection_images">
+        <div id="pet1" class = "petSprite" onclick="petImageClicked(event)"></div>
+        <div id="pet2" class = "petSprite" onclick="petImageClicked(event)"></div>
+        <div id="pet3" class = "petSprite" onclick="petImageClicked(event)"></div>
+
+        <div id="pet4" class = "petSprite" onclick="petImageClicked(event)"></div>
+        <div id="pet5" class = "petSprite" onclick="petImageClicked(event)"></div>
+        <div id="pet6" class = "petSprite" onclick="petImageClicked(event)"></div>
+      </div>
+    </div>
+    <div id="buttonDisplay">
+      <button id="petSelectButton" class="button_256px" onclick="petSelected()">CONFIRM</button>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+<!-- TEST CODE SECTION -->
+
+<!-- SCRIPTS -->
+
+<script>
+  let bgmGameDance = document.getElementsByClassName("danceBGM")
+  for (i=0; i < bgmGameDance.length; i++) {
+    bgmGameDance[i].onended = function() {
+    bgmGameDanceReset()
+    }
+  }
+</script>  
+
+
+
+<!-- TEST CODE SECTION END -->
+
+<!-- TEMPLATES -->
+
+  <template id="petNameForm">
+    <div id="mainPetImage"></div>
+      <form id="nameForm" onsubmit = "return false">
+      <input type="text" id="petNameInputField" size="21">
+      </form>
+  </template>
+
+  <template id="nameConfirmButton">
+    <button id="nameConfirmButton" class="button_256px" onClick="nameCheck()">CONFIRM</button>
+  </template>
+
+  <template id="welcomePet">
+    <div id="welcomePetBackground"></div>
+  </template>
+
+  <template id="welcomeText">
+    <div id="welcomeName"></div>
+  </template>
+
+  <template id="playGameButton">
+    <div>
+      <button id="playGameButton" class="button_256px" onclick="playGame()">OK</button>
+    </div>
+  </template>
+
+  <template id="game">
+    <div id="gameArea">
+      <div id="gameBackground">
+        <div id="stats">
+          <div id="statsName">Bobster</div>
+          <div id="statsAge">Age: 0</div>
+          <div id="statsFitness">Fitness: 10</div>
+          <div id="statsHunger">Hunger: 200000000000</div>
+        </div>
+        <div id="petSprite"></div>
+        <div id="foodDisplay">
+          <div id="food0" class="foodItem"></div>
+          <div id="food1" class="foodItem"></div>
+          <div id="food2" class="foodItem"></div>
+          <div id="food3" class="foodItem"></div>
+          <div id="food4" class="foodItem"></div>
+          <div id="food5" class="foodItem"></div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="gameButtons">
+    <div>
+      <button class="button_128px" onclick="feedPet()">FEED PET</button>
+      <button class="button_128px" onclick="exercisePet()">EXERCISE PET</button>
+      <button class="button_128px" onclick="bgmGameDancePlay()">DANCE</button>
+      <button class="button_128px" onclick="sleepPet()">SLEEP</button>
+      <div id="happyBirthday"></div>
+    </div>
+  </template>
+
+
+
+
+
+  
+<!-- <div>sound on off https://www.w3schools.com/tags/av_prop_volume.asp</div>
+
   <div>pet stats = age, fitness, hunger</div>
   <div>check up = text display</div>
-  <div>pet sprite = scaleup on age increase, fade in out to alt sprites on age increase</div>
+  <div>pet sprite = scaleup on age increase / fade in out to alt sprites on age increase</div>
   <div>walk button</div>
   <div>feed button</div>
   <div>is alive = text output</div>
-  <div>have baby = random time event</div>
+  <div>have baby = random time event</div> -->
+
+<!--   <script src="src/controller.js"></script> -->
+
+  <script type="text/javascript">
+    function petImageClicked(event) {      
+      const image = event.target
+      const imageId= event.target.id
+      petImageClick(image)
+    }    
+  </script>
 
 
 
+<footer>
+  <!-- <div>Pet images by <a href="https://www.freepik.com/free-vector/flat-farm-animal-collection_4549863.htm#query=pixel%20art%20animals&position=0&from_view=search&track=sph" target="_blank">Freepik</a></div> -->
+</footer>
 </body>
 </html>

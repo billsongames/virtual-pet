@@ -1,103 +1,106 @@
-const initialFitness = 10;
-const initialHunger = 0;
+(function exportPet() {
 
-const hungerGrowUpChange = 5;
-const hungerFeedChange = 3;
+  const initialFitness = 10;
+  const initialHunger = 0;
 
-const fitnessGrowUpChange = 3;
-const fitnessWalkChange = 4;
+  const hungerGrowUpChange = 2;
+  const hungerFeedChange = 4;
 
-const maxFitness = 10;
-const minHunger = 0;
+  const fitnessGrowUpChange = 3;
+  const fitnessWalkChange = 4;
 
-const minFitnessForWalk = 3;
-const minHungerForFeed = 5;
+  const maxFitness = 10;
+  const minHunger = 0;
 
-function Pet(name) {
-  this.name = name;
-  this.age = 0;
-  this.hunger = initialHunger;
-  this.fitness = initialFitness;
-  this.children = []
-};
+  const minFitnessForWalk = 3;
+  const minHungerForFeed = 5;
 
-Pet.prototype = {
-  get isAlive() {
-    return this.fitness > 0 && this.hunger < 10 && this.age < 30;
-  }
-};
-
-Pet.prototype.growUp = function() {
-  if (!this.isAlive) {
-    throw new Error('Your pet is no longer alive! :o(')
+  function Pet(name) {
+    this.name = name;
+    this.age = 0;
+    this.hunger = initialHunger;
+    this.fitness = initialFitness;
+    this.children = []
   };
 
-  this.age += 1;
-  this.hunger += hungerGrowUpChange;
-  this.fitness -= fitnessGrowUpChange;
+  Pet.prototype = {
+    get isAlive() {
+      return this.fitness > 0 && this.hunger < 10 && this.age < 30;
+    }
+  };
+
+  Pet.prototype.growUp = function() {
+    if (!this.isAlive) {
+      throw new Error('Your pet is no longer alive! :o(')
+    };
+
+    this.age += 1;
+    this.hunger += hungerGrowUpChange;
+    this.fitness -= fitnessGrowUpChange;
 
 /*   if (this.fitness > maxFitness) {
     this.fitness = maxFitness;
   }; */
-};
-
-Pet.prototype.walk = function() {
-  if (!this.isAlive) {
-    throw new Error('Your pet is no longer alive! :o(')
   };
 
-  this.fitness += fitnessWalkChange;
+  Pet.prototype.walk = function() {
+    if (!this.isAlive) {
+      throw new Error('Your pet is no longer alive! :o(')
+    };
 
-  if (this.fitness > maxFitness){
-    this.fitness = maxFitness;
-  };
-};
+    this.fitness += fitnessWalkChange;
 
-Pet.prototype.feed = function() {
-  if (!this.isAlive) {
-    throw new Error('Your pet is no longer alive! :o(')
-  };
-  try {
-  } catch (e) {
-    console.error(e)
+    if (this.fitness > maxFitness){
+      this.fitness = maxFitness;
+    };
   };
 
-  this.hunger -= hungerFeedChange;
+  Pet.prototype.feed = function() {
+    if (!this.isAlive) {
+      throw new Error('Your pet is no longer alive! :o(')
+    };
 
-  if (this.hunger < minHunger){
-      this.hunger = minHunger;
-  };
-};
+    this.hunger -= hungerFeedChange;
 
-Pet.prototype.checkUp = function () {
-  if (!this.isAlive) {
-    return('Your pet is no longer alive! :o(')
-  };
-
-  if (this.fitness <= minFitnessForWalk && this.hunger >= minHungerForFeed) {
-    return ("I am hungry AND I need a walk")
+    if (this.hunger < minHunger){
+        this.hunger = minHunger;
+    };
   };
 
-  if (this.fitness <= minFitnessForWalk) {
-    return ("I need a walk")
+  Pet.prototype.checkUp = function () {
+    if (!this.isAlive) {
+      return('Your pet is no longer alive! :o(')
+    };
+
+    if (this.fitness <= minFitnessForWalk && this.hunger >= minHungerForFeed) {
+      return ("I am hungry AND I need a walk")
+    };
+
+    if (this.fitness <= minFitnessForWalk) {
+      return ("I need a walk")
+    };
+
+    if (this.hunger >= minHungerForFeed) {
+      return("I am hungry")
+    };
+
+    if (this.hunger < minHungerForFeed && this.fitness > minFitnessForWalk) {
+      return("I feel great!")
+    };  
   };
 
-  if (this.hunger >= minHungerForFeed) {
-    return("I am hungry")
+  Pet.prototype.adoptChild = function(child) {
+    this.children.push(child)
   };
 
-  if (this.hunger < minHungerForFeed && this.fitness > minFitnessForWalk) {
-    return("I feel great!")
-  };  
-};
+  Pet.prototype.haveBaby = function(babyName) {
+    baby = new Pet(babyName)
+    this.children.push(baby)
+  };
 
-Pet.prototype.adoptChild = function(child) {
-  this.children.push(child)
-};
-
-Pet.prototype.haveBaby = function(babyName) {
-  baby = new Pet(babyName)
-  this.children.push(baby)
-};
-
-module.exports = Pet;
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = Pet;
+  } else {
+    window.Pet = Pet;
+  }
+}())  

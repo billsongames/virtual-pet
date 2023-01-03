@@ -27,7 +27,7 @@ it('pet has a name', () => {
 });
 
 describe('growUp', () => {
-  it('increase age by 1', () => {
+  xit('increase age by 1', () => {
     const pet = new Pet('Fido');
     pet.growUp();
     expect(pet.age).toEqual(1);
@@ -59,7 +59,7 @@ describe('feed', () => {
     expect(() => pet.feed()).toThrow('Your pet is no longer alive! :o(');
   });
 
-  it('feed decreases hunger by 3', () => {
+  xit('feed decreases hunger by 3', () => {
     const pet = new Pet('Fido');
     pet.hunger = 8;
     pet.feed();

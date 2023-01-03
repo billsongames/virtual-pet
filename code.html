@@ -1,0 +1,71 @@
+    <audio id="chicken-noise" autoplay><source src="./sound/chicken.wav"/></audio>
+    <audio id="cow-noise" src="./sound/cow.wav"></audio>
+    <audio id="dog-noise" src="./sound/dog.wav"></audio>
+    <audio id="goat-noise" src="./sound/goat.wav"></audio>
+    <audio id="goose-noise" src="./sound/goose.wav"></audio>
+    <audio id="horse-noise" src="./sound/horse.wav"></audio>
+    <audio id="pig-noise" src="./sound/pig.wav"></audio>
+    <audio id="rabbit-noise" src="./sound/rabbit.wav"></audio>
+    <audio id="sheep-noise" src="./sound/sheep.wav"></audio>
+    <audio id = "POL-staff-roll-short" src="./sound/music/POL-staff-roll-short.wav")></audio>
+    
+    <div id="pet_selection_row">
+      <img class="pet_selection_image" src="./images/chicken.png" alt="Chicken" onMouseOver="document.getElementById('chicken-noise').play()">
+      <img class="pet_selection_image" src="./images/cow.png" alt="Cow" onMouseOver="document.getElementById('cow-noise').play()">
+      <img class="pet_selection_image" src="./images/dog.png" alt="Dog"onMouseOver="document.getElementById('dog-noise').play()">
+      <img class="pet_selection_image" src="./images/goat.png" alt="Goat" onMouseOver="document.getElementById('goat-noise').play()">
+      <img class="pet_selection_image" src="./images/goose.png" alt="Goose" onMouseOver="document.getElementById('goose-noise').play()">
+      <img class="pet_selection_image" src="./images/horse.png" alt="Horse"onMouseOver="document.getElementById('horse-noise').play()">
+      <img class="pet_selection_image" src="./images/pig.png" alt="Pig"onMouseOver="document.getElementById('pig-noise').play()">
+      <img class="pet_selection_image" src="./images/rabbit.png" alt="Rabbit" onMouseOver="document.getElementById('rabbit-noise').play()">
+      <img class="pet_selection_image" src="./images/sheep.png" alt="Sheep" onMouseOver="document.getElementById('sheep-noise').play()">
+    </div>
+
+  const pets = [
+  {type: "chicken", latinName: "Gallus gallus domesticus", lifespan: "5-10 years", good: "Makes eggs",bad: "Not for KFC fans"},
+  {type: "cow", latinName: "Bos taurus", lifespan: "20 years", good : "Lives in a field ", bad: "McDonalds is a no go area"},
+  {type: "dog", latinName: "Canis lupus familiaris", lifespan: "10-15 years", good: "Plays fetch", bad: "Chases own tail"},
+  {type: "goat", latinName : "Capra aegagrus hircus", lifespan : "15-18 years", good : "Makes strong cheese", bad : "Eats anything!"},
+/*   {type: "goose", latinName : "Anser", lifespan : "10-24 years", good : "Nice flying formations", bad : "Known to chase children"}, */
+  {type: "horse", latinName : "Equus caballus", lifespan : "25-30 years", good : "Useful for long journeys", bad : "Might kick in face"},
+  {type: "pig", latinName : "Sus scrofa domesticus", lifespan : "15-20 years", good : "Friends with Pooh", bad : "Bit smelly"},
+  {type: "rabbit", latinName : "Oryctolagus cuniculus", lifespan : "8-12 years", good : "Cute", bad : "Lots of droppings"},
+  {type: "sheep", latinName : "Ovis aries", lifespan : "10-12 years", good : "Makes woolly jumpers", bad : "Hates sheepdogs"}
+]
+
+
+    <div id="pet_selection_images">
+      <div>
+        <img class="pet_small_image" id="chicken" src="./images/chicken.png" alt="Chicken"
+        onclick="animateSprites()">
+        
+        <img class="pet_small_image" id="cow" src="./images/cow.png" alt="Cow"
+        onclick="petImageClicked(event)">
+    
+        <img class="pet_small_image" id="dog" src="./images/dog.png" alt="Dog"
+        onclick="petImageClicked(event)">
+    
+        <img class="pet_small_image" id="goat" src="./images/goat.png" alt="Goat"
+        onclick="petImageClicked(event)">
+        </div>
+
+        <div>
+        <img class="pet_small_image" id="horse" src="./images/horse.png" alt="Horse"
+        onclick="petImageClicked(event)">
+    
+        <img class="pet_small_image" id="pig" src="./images/pig.png" alt="Pig"
+        onclick="petImageClicked(event)">
+    
+        <img class="pet_small_image" id="rabbit" src="./images/rabbit.png" alt="Rabbit"
+        onclick="petImageClicked(event)">
+    
+        <img class="pet_small_image" id="sheep" src="./images/sheep.png" alt="Sheep"
+        onclick="petImageClicked(event)">
+        </div>
+
+        <div id="test_sprite"></div>
+        
+        <div id="buttons">
+          <button id="petSelectButton" onclick="petSelected()" disabled = "true">CONFIRM</button>
+        </div>
+      </div>
